@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    hostname: localhost
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: 443
+    statusPageUrl: https://${eureka.hostname}/actuator/info
+    homePageUrl: https://${eureka.hostname}/
+  client:
+    eureka-server-port: 8761
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
